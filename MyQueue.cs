@@ -24,6 +24,8 @@
         {
             if (head == -1 || head > tail)
             {
+                head = -1;
+                tail = 0;
                 throw new Exception("Queue is empty");
             }
             var result = _repository[head];
