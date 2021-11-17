@@ -32,7 +32,7 @@ namespace SimpleQueue
             }
             var result = _repository[_head];
             _head++;
-            if(_head > _tail)
+            if (_head > _tail)
             {
                 _head = -1;
                 _tail = 0;
@@ -42,6 +42,10 @@ namespace SimpleQueue
 
         public int Size()
         {
+            if (_head == -1)
+            {
+                throw new Exception("Queue is empty");
+            }
             return _tail - _head;
         }
     }
@@ -66,6 +70,14 @@ namespace SimpleQueue
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+            try
+            {
+                Console.WriteLine(myQueue.Size());
+            }
+            catch (Exception emptyEx)
+            {
+                Console.WriteLine(emptyEx);
             }
             myQueue.Enqueue(40);
             Console.WriteLine(myQueue.Dequeue());
